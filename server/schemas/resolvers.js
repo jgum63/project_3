@@ -10,12 +10,12 @@ const resolvers = {
     user: async (parent, { username }) => {
       return User.findOne({ username }).populate('thoughts');
     },
-    thoughts: async (parent, { username }) => {
+    events: async (parent, { username }) => {
       const params = username ? { username } : {};
-      return Thought.find(params).sort({ createdAt: -1 });
+      return Event.find(params).sort({ createdAt: -1 });
     },
-    thought: async (parent, { thoughtId }) => {
-      return Thought.findOne({ _id: thoughtId });
+    event: async (parent, { thoughtId }) => {
+      return Event.findOne({ _id: thoughtId });
     },
     me: async (parent, args, context) => {
       if (context.user) {
@@ -48,29 +48,32 @@ const resolvers = {
 
       return { token, user };
     },
-    addThought: async (parent, { thoughtText }, context) => {
+    addEvent: async (parent, { location, eventType, date, comment }, context) => {
       if (context.user) {
-        const thought = await Thought.create({
-          thoughtText,
-          thoughtAuthor: context.user.username,
+        const event = await Event.create({
+          location,
+          eventType,
+          date, 
+          comment,
+          eventType: context.user.username,
         });
 
         await User.findOneAndUpdate(
           { _id: context.user._id },
-          { $addToSet: { thoughts: thought._id } }
+          { $addToSet: { event: event._id } }
         );
 
-        return thought;
+        return event;
       }
       throw new AuthenticationError('You need to be logged in!');
     },
-    addComment: async (parent, { thoughtId, commentText }, context) => {
+    addReview: async (parent, { eventId, reviewText }, context) => {
       if (context.user) {
-        return Thought.findOneAndUpdate(
-          { _id: thoughtId },
+        return Event.findOneAndUpdate(
+          { _id: eventId },
           {
             $addToSet: {
-              comments: { commentText, commentAuthor: context.user.username },
+              reviews: { reviewText, reviewAuthor: context.user.username },
             },
           },
           {
@@ -81,31 +84,31 @@ const resolvers = {
       }
       throw new AuthenticationError('You need to be logged in!');
     },
-    removeThought: async (parent, { thoughtId }, context) => {
+    removeEvent: async (parent, { eventId }, context) => {
       if (context.user) {
-        const thought = await Thought.findOneAndDelete({
-          _id: thoughtId,
-          thoughtAuthor: context.user.username,
+        const event = await Event.findOneAndDelete({
+          _id: eventId,
+          eventUser: context.user.username,
         });
 
         await User.findOneAndUpdate(
           { _id: context.user._id },
-          { $pull: { thoughts: thought._id } }
+          { $pull: { events: event._id } }
         );
 
-        return thought;
+        return event;
       }
       throw new AuthenticationError('You need to be logged in!');
     },
-    removeComment: async (parent, { thoughtId, commentId }, context) => {
+    removeReview: async (parent, { eventId, reviewId }, context) => {
       if (context.user) {
-        return Thought.findOneAndUpdate(
-          { _id: thoughtId },
+        return Event.findOneAndUpdate(
+          { _id: eventId },
           {
             $pull: {
-              comments: {
-                _id: commentId,
-                commentAuthor: context.user.username,
+              reviews: {
+                _id: reviewId,
+                reviewAuthor: context.user.username,
               },
             },
           },
