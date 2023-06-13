@@ -1,18 +1,18 @@
 const { Schema, model } = require('mongoose');
 const dateFormat = require('../utils/dateFormat');
 
-const thoughtSchema = new Schema({
-  thoughtText: {
-    type: String,
-    required: 'You need to leave a thought!',
-    minlength: 1,
-    maxlength: 280,
-    trim: true,
+const eventSchema = new Schema({
+  location: {
+    
+      type: Schema.Types.ObjectId,
+      ref: 'location',
+    
   },
-  thoughtAuthor: {
-    type: String,
-    required: true,
-    trim: true,
+  eventType: {
+    
+      type: Schema.Types.ObjectId,
+      ref: 'eventType',
+    
   },
   createdAt: {
     type: Date,
@@ -40,6 +40,6 @@ const thoughtSchema = new Schema({
   ],
 });
 
-const Thought = model('Thought', thoughtSchema);
+const Event = model('Event', eventSchema);
 
-module.exports = Thought;
+module.exports = Event;
