@@ -3,16 +3,16 @@ const dateFormat = require('../utils/dateFormat');
 
 const eventSchema = new Schema({
   location: {
-    
-      type: Schema.Types.ObjectId,
-      ref: 'location',
-    
+
+    type: Schema.Types.ObjectId,
+    ref: 'location',
+
   },
   eventType: {
-    
-      type: Schema.Types.ObjectId,
-      ref: 'eventType',
-    
+
+    type: Schema.Types.ObjectId,
+    ref: 'EventType',
+
   },
   createdAt: {
     type: Date,
