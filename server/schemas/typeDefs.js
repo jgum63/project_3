@@ -13,7 +13,7 @@ const typeDefs = gql`
     _id: ID
     location: String
     eventType: String
-    date: Date
+    date: String
     reviews: [Review]!
   }
 
@@ -21,7 +21,11 @@ const typeDefs = gql`
     _id: ID
     reviewText: String
     reviewAuthor: String
-    createdAt: Date
+    createdAt: String
+  }
+  input ReviewInput {
+    reviewText: String
+    reviewAuthor: String
   }
 
   type Auth {
@@ -40,7 +44,7 @@ const typeDefs = gql`
   type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-    addEvent(location: String!, eventType: String!, date: Date, review: [Review]): Event
+    addEvent(location: String!, eventType: String!, date: String, review: ReviewInput): Event
     addReview(eventId: ID!, reviewText: String!): Event
     removeEvent(eventId: ID!): Event
     removeReview(eventId: ID!, reviewId: ID!): Event

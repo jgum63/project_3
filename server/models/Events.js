@@ -2,18 +2,8 @@ const { Schema, model } = require('mongoose');
 const dateFormat = require('../utils/dateFormat');
 
 const eventSchema = new Schema({
-  location: {
-
-    type: Schema.Types.ObjectId,
-    ref: 'location',
-
-  },
-  eventType: {
-
-    type: Schema.Types.ObjectId,
-    ref: 'EventType',
-
-  },
+  location: String,
+  eventType: String,
   date: {
     type: Date,
     get: (timestamp) => dateFormat(timestamp),
@@ -26,7 +16,7 @@ const eventSchema = new Schema({
         minlength: 1,
         maxlength: 280,
       },
-      eventUser: {
+      reviewAuthor: {
         type: String,
         required: true,
       },

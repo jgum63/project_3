@@ -54,7 +54,7 @@ const resolvers = {
           location,
           eventType,
           date,
-          review,
+          reviews: [review],
         });
 
         await User.findOneAndUpdate(
