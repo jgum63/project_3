@@ -14,20 +14,19 @@ const eventSchema = new Schema({
     ref: 'EventType',
 
   },
-  createdAt: {
+  date: {
     type: Date,
-    default: Date.now,
     get: (timestamp) => dateFormat(timestamp),
   },
-  comments: [
+  reviews: [
     {
-      commentText: {
+      reviewText: {
         type: String,
         required: true,
         minlength: 1,
         maxlength: 280,
       },
-      commentAuthor: {
+      eventUser: {
         type: String,
         required: true,
       },

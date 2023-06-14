@@ -14,14 +14,14 @@ const typeDefs = gql`
     location: String
     eventType: String
     date: Date
-    comments: [Comment]!
+    reviews: [Review]!
   }
 
   type Review {
     _id: ID
     reviewText: String
     reviewAuthor: String
-    eventType: String
+    createdAt: Date
   }
 
   type Auth {
@@ -32,8 +32,8 @@ const typeDefs = gql`
   type Query {
     users: [User]
     user(username: String!): User
-    events(username: String): [Thought]
-    event(thoughtId: ID!): Thought
+    events: [Event]
+    event(eventId: ID!): Event
     me: User
   }
 
