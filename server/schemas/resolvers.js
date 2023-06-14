@@ -10,9 +10,9 @@ const resolvers = {
     user: async (parent, { username }) => {
       return User.findOne({ username }).populate('events');
     },
-    events: async (parent, { username }) => {
-      const params = username ? { username } : {};
-      return Event.find(params).sort({ createdAt: -1 });
+    events: async (parent,) => {
+      // const params = username ? { username } : {};
+      return Event.find().sort({ createdAt: -1 });
     },
     event: async (parent, { eventId }) => {
       return Event.findOne({ _id: eventId });
@@ -48,19 +48,18 @@ const resolvers = {
 
       return { token, user };
     },
-    addEvent: async (parent, { location, eventType, date, comment }, context) => {
+    addEvent: async (parent, { location, eventType, date, review }, context) => {
       if (context.user) {
         const event = await Event.create({
           location,
           eventType,
           date,
-          comment,
-          eventType: context.user.username,
+          review,
         });
 
         await User.findOneAndUpdate(
           { _id: context.user._id },
-          { $addToSet: { event: event._id } }
+          { $addToSet: { events: event._id } }
         );
 
         return event;
@@ -88,7 +87,6 @@ const resolvers = {
       if (context.user) {
         const event = await Event.findOneAndDelete({
           _id: eventId,
-          eventUser: context.user.username,
         });
 
         await User.findOneAndUpdate(

@@ -14,7 +14,7 @@ db.once('open', async () => {
     await Location.deleteMany({});
     await EventType.deleteMany({})
 
-    await User.create(userSeeds);
+    const users = await User.create(userSeeds);  //  create users 
     let eventTypeIds = []
     let locationIds = []
     for (let i = 0; i < eventTypeSeeds.length; i++) {
@@ -29,7 +29,7 @@ db.once('open', async () => {
       console.log("_id:", _id, "location:", location)
       locationIds.push(_id)
     }
-
+    console.log(users)
     for (let i = 0; i < 5; i++) {
 
       // events look like 
@@ -40,7 +40,7 @@ db.once('open', async () => {
       let newEvent = {
         location: new ObjectId(locationIds[i]._id),
         eventType: new ObjectId(eventTypeIds[i]._id),
-        eventDate: "7/4/2023",
+        date: "7/4/2023",
         // reviews: eventSeeds[i].review
       }
       console.log(newEvent)
@@ -48,15 +48,16 @@ db.once('open', async () => {
       console.log(event)
       // console.log("_id:", _id, "EventType:", eventType)
       // eventTypeIds.push(_id)
+      const user = await User.findByIdAndUpdate(
+        users[i]._id,
+        {
+          $addToSet: {
+            events: event._id,
+          },
+        }
+      );
     }
-    // const user = await User.findOneAndUpdate(
-    //   { username: eventAuthor },
-    //   {
-    //     $addToSet: {
-    //       events: _id,
-    //     },
-    //   }
-    // );
+
 
   } catch (err) {
     console.error(err);

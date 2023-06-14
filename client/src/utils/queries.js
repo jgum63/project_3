@@ -6,39 +6,70 @@ export const QUERY_USER = gql`
       _id
       username
       email
-      thoughts {
+      events {
         _id
-        thoughtText
+        location
+        eventType
+        date
+        reviews{
+        reviewText
+        reviewAuthor
         createdAt
+        }
       }
     }
   }
 `;
 
-export const QUERY_THOUGHTS = gql`
-  query getThoughts {
-    thoughts {
+export const QUERY_USERS = gql`
+  query users {
+    users {
       _id
-      thoughtText
-      thoughtAuthor
-      createdAt
+      username
+      email
+      events {
+        _id
+        location
+        eventType
+        date
+        reviews{
+        reviewText
+        reviewAuthor
+        createdAt
+        }
+      }
     }
   }
 `;
 
-export const QUERY_SINGLE_THOUGHT = gql`
-  query getSingleThought($thoughtId: ID!) {
-    thought(thoughtId: $thoughtId) {
+export const QUERY_EVENTS = gql`
+  query events {
+    events {
       _id
-      thoughtText
-      thoughtAuthor
-      createdAt
-      comments {
-        _id
-        commentText
-        commentAuthor
+        location
+        eventType
+        date
+        reviews{
+        reviewText
+        reviewAuthor
         createdAt
-      }
+        }
+    }
+  }
+`;
+
+export const QUERY_SINGLE_EVENT = gql`
+  query event($eventId: ID!) {
+    event(eventId: $eventId) {
+      _id
+        location
+        eventType
+        date
+        reviews{
+        reviewText
+        reviewAuthor
+        createdAt
+        }
     }
   }
 `;
@@ -49,11 +80,16 @@ export const QUERY_ME = gql`
       _id
       username
       email
-      thoughts {
+      events {
         _id
-        thoughtText
-        thoughtAuthor
+        location
+        eventType
+        date
+        reviews{
+        reviewText
+        reviewAuthor
         createdAt
+        }
       }
     }
   }
