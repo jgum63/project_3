@@ -25,20 +25,20 @@ export const ADD_USER = gql`
 `;
 
 export const ADD_EVENT = gql`
-  mutation addEvent($eventType: String!) {
-    addEvent(eventType: $eventType) {
+ mutation Mutation($location: String!, $eventType: String!, $date: String, $review: ReviewInput) {
+  addEvent(location: $location, eventType: $eventType, date: $date, review: $review) {
+    _id
+    date
+    eventType
+    location
+    reviews {
       _id
-      eventType
-      location
-      date
-      reviews {
-        _id
-        reviewText
-        reviewAuthor
-        createAt
-      }
+      createdAt
+      reviewAuthor
+      reviewText
     }
   }
+}
 `;
 
 export const ADD_REVIEW = gql`
