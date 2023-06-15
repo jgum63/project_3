@@ -14,7 +14,7 @@ import Signup from './pages/Signup';
 import Login from './pages/Login';
 // import SingleThought from './pages/SingleThought';
 // import Profile from './pages/Profile';
-import Navbar from './NewComponents/Header';
+import Navbar from './NewComponents/Navbar';
 import Footer from './NewComponents/Footer';
 import Events from './pages/Events'
 import MyEvents from './pages/MyEvents'
