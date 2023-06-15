@@ -41,8 +41,7 @@
   color: #888;
 }
 
-.events,
-.my-events {
+.events {
   display: flex;
   height: 90vh;
   align-items: center;
@@ -51,15 +50,6 @@
 }
 
 .events {
-  background-image: url('/images/img-1.jpg');
-  background-position: center;
-  background-size: fill;
-  background-repeat: no-repeat;
-  color: white;
-  font-size: 100px;
-}
-
-.my-events {
   background-image: url('/images/img-1.jpg');
   background-position: center;
   background-size: fill;

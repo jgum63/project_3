@@ -1,8 +1,8 @@
 import React from "react";
 import { Card, CardBody, CardFooter, Image, Stack, Heading, Text, Divider, ButtonGroup, Button} from '@chakra-ui/react';
-import { useMutation } from '@apollo/client';
 
-function EventCard() {
+function EventCard({event}) {
+  console.log(event)
   return (
     <Card maxW="sm">
       <CardBody>
@@ -12,7 +12,7 @@ function EventCard() {
           borderRadius="lg"
         />
         <Stack mt="6" spacing="3">
-          <Heading size="md">Living room Sofa</Heading>
+          <Heading size="md">{event.location}</Heading>
           <Text>
             This sofa is perfect for modern tropical spaces, baroque inspired
             spaces, earthy toned spaces and for people who love a chic design

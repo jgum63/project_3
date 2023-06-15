@@ -26,11 +26,6 @@ const Navbar = () => {
               All Events
             </Link>
           </li>
-          <li className="nav-item">
-            <Link to="/my-events" className="nav-links">
-              My Events
-            </Link>
-          </li>
         </ul>
           {Auth.loggedIn() ? (
             <>
