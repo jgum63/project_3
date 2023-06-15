@@ -7,12 +7,12 @@ export default function Card() {
     <main>
       <h1 className="events">Events</h1>
       <div className="events-container">
+        {/* <EventCard />
         <EventCard />
         <EventCard />
         <EventCard />
         <EventCard />
-        <EventCard />
-        <EventCard />
+        <EventCard /> */}
       </div>
     </main>
   );
