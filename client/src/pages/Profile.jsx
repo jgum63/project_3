@@ -4,6 +4,7 @@ import { useQuery } from '@apollo/client';
 
 // import ThoughtForm from '../components/ThoughtForm';
 import EventList from '../components/EventList';
+import EventForm from '../components/Eventform'
 
 import { QUERY_USER, QUERY_ME } from '../utils/queries';
 
@@ -55,7 +56,7 @@ const Profile = () => {
             className="col-12 col-md-10 mb-3 p-3"
             style={{ border: '1px dotted #1a1a1a' }}
           >
-            {/* <EventForm /> */}
+            <EventForm />
           </div>
         )}
       </div>
