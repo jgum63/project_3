@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import EventCard from '../../NewComponents/EventCard'
+import { Card, CardBody, CardFooter, Image, Stack, Heading, Text, Divider, ButtonGroup, Button, Flex} from '@chakra-ui/react';
 
 const EventList = ({
   events,
@@ -13,11 +14,14 @@ const EventList = ({
   }
 
   return (
-    <div>
+    <Flex>
       {showTitle && <h3>{title}</h3>}
       {events &&
         events.map((event) => (
+
+            
           <EventCard event={event} />
+   
           // <div key={event._id} className="card mb-3">
           //   <h4 className="card-header bg-primary text-light p-2 m-0">
           //     {showUsername ? (
@@ -49,7 +53,7 @@ const EventList = ({
           //   </Link>
           // </div>
         ))}
-    </div>
+  </Flex>
   );
 };
 
