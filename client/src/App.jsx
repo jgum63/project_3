@@ -13,11 +13,11 @@ import Home from './pages/Home';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
 // import SingleThought from './pages/SingleThought';
-// import Profile from './pages/Profile';
+import Profile from './pages/Profile';
 import Navbar from './NewComponents/Navbar';
 import Footer from './NewComponents/Footer';
 import Events from './pages/Events'
-import MyEvents from './pages/MyEvents'
+
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -68,12 +68,8 @@ function App() {
                 element={<Events />}
                 />
                 <Route
-                path="/my-events"
-                element={<MyEvents />}
-                />
-                <Route
-                // path="/me"
-                // element={<Profile />}
+                path="/me"
+                element={<Profile />}
                 />
                 <Route
                 // path="/profiles/:username"
