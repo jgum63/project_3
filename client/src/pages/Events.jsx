@@ -4,32 +4,57 @@ import '../NewComponents/EventCard/EventCard.css';
 import { useState } from 'react';
 import { Button, Container } from "@chakra-ui/react";
 
-
-const handleSubmit = () => {
-  let dropdown = document.getElementById("myLocation");
-  let selectedOption = dropdown.value;
-  console.log(selectedOption)
-
-  let dropdown2 = document.getElementById("myEvent");
-  let selectedOption2 = dropdown2.value;
-  console.log(selectedOption2)
-
-  let input = document.getElementById("myDate")
-  let value = input.value;
-  console.log(value)
-  console.log('you clicked submit')
-
-}
-
-
-// const handleLocation = () => {
-//   const [location, setLocation] = useState('');
-//   console.log(location)
-// }
+import { useMutation } from '@apollo/client';
+import { ADD_EVENT } from '../utils/mutations';
+import { QUERY_EVENTS, QUERY_ME } from "../utils/queries";
 
 
 
 export default function Card() {
+  const [formState, setFormState] = useState({
+    date: "",
+    eventType: "",
+    location: "",
+  })
+
+  // const [addEvent, { error, data }] = useMutation(ADD_EVENT)
+  const [addEvent, { error }] = useMutation(ADD_EVENT, {
+    update(cache, { data: { addEvent } }) {
+      try {
+        const { me } = cache.readQuery({ query: QUERY_ME });
+        cache.writeQuery({
+          query: QUERY_ME,
+          data: { me: { ...me, events: [...me.events, addEvent] } },
+        });
+      } catch (e) {
+        console.log(e)
+      }
+    },
+  });
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
+    console.log(formState);
+
+    try {
+      const { data } = await addEvent({
+        variables: { ...formState },
+      });
+
+      // Auth.login(data.addUser.token);
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+
+    setFormState({
+      ...formState,
+      [name]: value,
+    });
+  };
+
   return (
     <main>
       <h1 className="events">Events</h1>
@@ -40,9 +65,13 @@ export default function Card() {
 
         <h3>Add a New Event</h3>
         <h4>Select your location:</h4>
-        <form action="" method="">
-
-          <select id="myLocation">
+        <form onSubmit={handleFormSubmit}>
+          <select id="myLocation" className="form-input"
+            // placeholder="location"
+            name="location"
+            type="text"
+            value={formState.location}
+            onChange={handleChange}>
             <option value="Blank">  </option>
             <option value="Key Largo">Key Largo</option>
             <option value="Fiesta Key">Fiesta Key</option>
@@ -52,12 +81,15 @@ export default function Card() {
             <option value="Money Key">Money Key</option>
             <option value="No Name Key">No Name Key</option>
           </select>
-        </form>
 
-        <h4>Select your event:</h4>
-
-        <form action="" method="">
-          <select id="myEvent">
+          <h4>Select your event:</h4>
+          <select id="myEvent"
+            className="form-input"
+            placeholder="eventType"
+            name="eventType"
+            type="text"
+            value={formState.eventType}
+            onChange={handleChange}>
             <option value="Blank">  </option>
             <option value="Swimming with Dolphins">Swimming with Dolphins</option>
             <option value="Kayaking">Kayaking</option>
@@ -73,11 +105,23 @@ export default function Card() {
             <option value="Helicopter Ride over Islands">Helicopter Ride over Islands</option>
             <option value="Fishing">Fishing</option>
           </select>
-          <br></br>
           <h4>Select your date:</h4>
-          <input type="text" id="myDate" placeholder="Enter your date" />
 
-          <div><Button onClick={handleSubmit}>Submit</Button></div>
+
+          <input
+            className="form-input"
+            placeholder="Your date"
+            name="date"
+            type="text"
+            value={formState.date}
+            onChange={handleChange}
+          />
+
+
+
+
+
+          <div><Button type="submit">Submit</Button></div>
 
           <hr></hr>
         </form>

@@ -5,7 +5,7 @@ const eventSchema = new Schema({
   location: String,
   eventType: String,
   date: {
-    type: Date,
+    type: String,
     get: (timestamp) => dateFormat(timestamp),
   },
   reviews: [
