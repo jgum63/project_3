@@ -18,11 +18,14 @@ const Profile = () => {
   });
 
   const user = data?.me || data?.user || {};
+  console.log(user)
   // navigate to personal profile page if username is yours
-  if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
-    return <Navigate to="/me" />;
-  }
 
+  // if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
+  //   return <Navigate to="/me" />;
+  // }
+
+  console.log(loading)
   if (loading) {
     return <div>Loading...</div>;
   }
@@ -36,13 +39,13 @@ const Profile = () => {
     );
   }
 
+
   return (
     <div>
-      <div className="flex-row justify-center mb-3">
+      <div className="flex-row justify-center mb-3 mt-5">
         <h2 className="col-12 col-md-10 bg-dark text-light p-3 mb-5">
-          Viewing {userParam ? `${user.username}'s` : 'your'} profile.
+          Viewing {`${user.username}'s`} profile.
         </h2>
-
         <div className="col-12 col-md-10 mb-5">
           <EventList
             events={user.events}
