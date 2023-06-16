@@ -4,7 +4,7 @@ import { useQuery } from '@apollo/client';
 
 // import ThoughtForm from '../components/ThoughtForm';
 import EventList from '../components/EventList';
-import EventForm from '../components/Eventform'
+import EventForm from '../components/Eventform';
 
 import { QUERY_USER, QUERY_ME } from '../utils/queries';
 
