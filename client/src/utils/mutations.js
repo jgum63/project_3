@@ -57,3 +57,17 @@ export const ADD_REVIEW = gql`
     }
   }
 `;
+
+export const REMOVE_EVENT = gql`
+      mutation Mutation($eventId: ID!) {
+      removeEvent(eventId: $eventId) {
+        _id
+        date
+        eventType
+        location
+      }
+    }
+  
+`;
+
+

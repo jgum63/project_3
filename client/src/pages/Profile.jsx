@@ -21,9 +21,9 @@ const Profile = () => {
   console.log(user)
   // navigate to personal profile page if username is yours
 
-  // if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
-  //   return <Navigate to="/me" />;
-  // }
+  if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
+    return <Navigate to="/me" />;
+  }
 
   console.log(loading)
   if (loading) {
@@ -44,7 +44,7 @@ const Profile = () => {
     <div>
       <div className="flex-row justify-center mb-3 mt-5">
         <h2 className="col-12 col-md-10 bg-dark text-light p-3 mb-5">
-          Viewing {`${user.username}'s`} profile.
+          Viewing {`${user.username}'s`} Events.
         </h2>
         <div className="col-12 col-md-10 mb-5">
           <EventList

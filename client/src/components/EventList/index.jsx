@@ -17,10 +17,11 @@ const EventList = ({
     <Flex>
       {showTitle && <h3>{title}</h3>}
       {events &&
-        events.map((event) => (
+        events.map((event) => {
+          // console.log(event)
 
-
-          <EventCard event={event} />
+          return <EventCard event={event} />}
+          
 
           // <div key={event._id} className="card mb-3">
           //   <h4 className="card-header bg-primary text-light p-2 m-0">
@@ -52,7 +53,7 @@ const EventList = ({
           //     Join the discussion on this thought.
           //   </Link>
           // </div>
-        ))}
+      )}
     </Flex>
   );
 };
