@@ -8,6 +8,6 @@ export default defineConfig({
   server: {
     proxy: {
       // string shorthand: http://localhost:5173/foo -> http://localhost:4567/foo
-      '/graphql': 'http://localhost:3001',
+      '/graphql': "http://localhost:"+process.env.PORT ||'http://localhost:3001',
     }}
 })
