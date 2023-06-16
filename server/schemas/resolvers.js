@@ -48,13 +48,12 @@ const resolvers = {
 
       return { token, user };
     },
-    addEvent: async (parent, { location, eventType, date, review }, context) => {
+    addEvent: async (parent, { location, eventType, date }, context) => {
       if (context.user) {
         const event = await Event.create({
           location,
           eventType,
           date,
-          reviews: [review],
         });
 
         await User.findOneAndUpdate(
