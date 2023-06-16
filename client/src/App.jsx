@@ -48,40 +48,41 @@ function App() {
     <ApolloProvider client={client}>
       <ChakraProvider>
         <Router>
-            <Navbar />
-            <div className="container">
-              <Routes>
-                <Route
+          <Navbar />
+          <div className="container">
+            <Routes>
+              <Route
                 path="/"
                 element={<Home />}
-                />
-                <Route
+              />
+              <Route
                 path="/login"
                 element={<Login />}
-                />
-                <Route
+              />
+              <Route
                 path="/signup"
                 element={<Signup />}
-                />
-                <Route
+              />
+              <Route
                 path="/events"
                 element={<Events />}
-                />
-                <Route
+              />
+
+              <Route
                 path="/me"
                 element={<Profile />}
-                />
-                <Route
-                // path="/profiles/:username"
-                // element={< />}
-                />
-                <Route
-                // path="/thoughts/:thoughtId"
-                // element={< />}
-                />
-              </Routes>
-            </div>
-            <Footer />
+              />
+              <Route
+              // path="/profiles/:username"
+              // element={< />}
+              />
+              <Route
+              // path="/thoughts/:thoughtId"
+              // element={< />}
+              />
+            </Routes>
+          </div>
+          <Footer />
         </Router>
       </ChakraProvider>
     </ApolloProvider>
