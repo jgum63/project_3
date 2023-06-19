@@ -7,7 +7,7 @@
 - [CSS Styling](#css-styling)
 - [User Specifications](#user-specifications)
 - [Functionality](#functionality)
-- [Mock-Up](#mock-up)
+- [Figma](#figma)
 - [Screenshots](#screenshots)
 - [Project Members](#project-members)
 - [Deliverables](#deliverables)
@@ -18,7 +18,7 @@ This project is collaborative MERN-stack single-page application Project.
 
 We combined a scalable MongoDB back end, a GraphQL API, and an Express.js and Node.js server with a React front end, implementing user authentication with JWT to build a user-focused platform. 
 
-  ~This project fulfills the following requirements:
+### This project fulfills the following requirements:
 
   ~Uses React for the front end.
 
@@ -43,7 +43,7 @@ We combined a scalable MongoDB back end, a GraphQL API, and an Express.js and No
   ~Has a clean repository that meets quality coding standards (file structure, naming conventions, best practices for class and id naming conventions, indentation, high-quality comments, and so on).
 
 ## CSS Styling
-We are using a component library,  Semantic UILinks.
+We are using the component library,  Chakra UI.
 
 ## User Specifications
 
@@ -59,9 +59,13 @@ After login, the user is presented with a page that contains the following optio
 
 The Event page allows the user to see all upcoming events, add an event and delete an event.  Also the user can review events.
 
-## Mock-up
+## Figma
+
+![Image showing Figma design of the Island Event Coordinator home page.".](./Images/FigmaIslandEventCoordinator.png)
 
 ## Screenshots
+
+![Image showing the Island Event Coordinator home page.".](./Images/HomePage.png)
 
 ## Project Members
 
@@ -72,11 +76,7 @@ Dawn Kline: https://github.com/dawn-kline-m </br>
 Jason Tavera: https://github.com/j3yT </br>
 
 ## Deliverables 
-How to Submit Your MERN-Stack Single-Page Application
-Each member of your group is required to submit the following for review:
 
-The URL of the deployed application on Heroku: 
+The URL of the deployed application on Heroku: https://enigmatic-beach-84569-d7ec102c11b2.herokuapp.com/
 
 The URL of the GitHub repository: https://github.com/jgum63/project_3
-
-The URL of your portfolio, with your project added to it.
