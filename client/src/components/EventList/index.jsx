@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import EventCard from '../../NewComponents/EventCard'
-import { Card, CardBody, CardFooter, Image, Stack, Heading, Text, Divider, ButtonGroup, Button, Flex, Grid, GridItem } from '@chakra-ui/react';
+import { Card, CardBody, CardFooter, Image, Stack, Heading, Text, Divider, ButtonGroup, Button, Flex, Grid, GridItem, useBreakpointValue } from '@chakra-ui/react';
 
 const EventList = ({
   events,
@@ -12,11 +12,15 @@ const EventList = ({
   if (!events.length) {
     return <h3>No Thoughts Yet</h3>;
   }
+  const templateColumns = useBreakpointValue({
+    base: 'repeat(1, 1fr)',
+    md: 'repeat(3, 1fr)'
+  }, { ssr: false })
 
   return (
     <Flex>
       {showTitle && <h3>{title}</h3>}
-      <Grid templateColumns='repeat(3, 1fr)' gap={8}>
+      <Grid templateColumns={templateColumns} gap={8}>
         {events &&
           events.map((event) => {
             // console.log(event)
