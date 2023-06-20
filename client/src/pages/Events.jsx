@@ -7,6 +7,7 @@ import AllEventCards from "../NewComponents/EventCard/AllEventCards"
 import { useMutation } from '@apollo/client';
 import { ADD_EVENT } from '../utils/mutations';
 import { QUERY_EVENTS, QUERY_ME } from "../utils/queries";
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -16,7 +17,7 @@ export default function Card() {
     eventType: "",
     location: "",
   })
-
+  const navigate = useNavigate();
   // const [addEvent, { error, data }] = useMutation(ADD_EVENT)
   const [addEvent, { error }] = useMutation(ADD_EVENT, {
     update(cache, { data: { addEvent } }) {
@@ -39,7 +40,7 @@ export default function Card() {
       const { data } = await addEvent({
         variables: { ...formState },
       });
-
+      navigate("/me");
       // Auth.login(data.addUser.token);
     } catch (e) {
       console.error(e);
