@@ -11,12 +11,12 @@ function Cards() {
           <ul className="cards__items">
             <CardItem
               src="images/img-2.jpg"
-              text="Explore the hidden waterfall deep inside the Amazon Jungle"
+              text="Kayaking"
               path="/events"
             />
             <CardItem
               src="images/img-3.jpg"
-              text="Travel through the Islands of Bali in a Private Cruise"
+              text="Diving and Snorkeling"
               path="/events"
             />
           </ul>
