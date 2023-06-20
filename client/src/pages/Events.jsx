@@ -3,7 +3,7 @@ import '../NewComponents/EventCard/EventCard.css';
 import '../App.css'
 import { useState } from 'react';
 import { Button, Container } from "@chakra-ui/react";
-import AllEventCards from "../NewComponents/EventCard/AllEventCards"
+//import AllEventCards from "../NewComponents/EventCard/AllEventCards"
 import { useMutation } from '@apollo/client';
 import { ADD_EVENT } from '../utils/mutations';
 import { QUERY_EVENTS, QUERY_ME } from "../utils/queries";
