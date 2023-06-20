@@ -45,7 +45,7 @@ export default function Event({ event }) {
       img = "images/Sailing.png"
       break;
     case "Helicopter Ride over Islands":
-      img = "Helicopter.png"
+      img = "images/Helicopter.png"
       break;
 
     default:

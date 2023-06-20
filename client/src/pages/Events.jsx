@@ -3,7 +3,7 @@ import '../NewComponents/EventCard/EventCard.css';
 import '../App.css'
 import { useState } from 'react';
 import { Button, Container } from "@chakra-ui/react";
-import AllEventCards from "../NewComponents/EventCard/AllEventCards"
+//import AllEventCards from "../NewComponents/EventCard/AllEventCards"
 import { useMutation } from '@apollo/client';
 import { ADD_EVENT } from '../utils/mutations';
 import { QUERY_EVENTS, QUERY_ME } from "../utils/queries";
@@ -104,7 +104,6 @@ export default function Card() {
             <option value="Dining">Dining</option>
             <option value="Sailing">Sailing</option>
             <option value="Helicopter Ride over Islands">Helicopter Ride over Islands</option>
-            <option value="Fishing">Fishing</option>
           </select>
           <h4>Select your date:</h4>
 
