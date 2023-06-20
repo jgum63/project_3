@@ -12,12 +12,20 @@
 .top-container > h1 {
     color: white;
     font-size: 100px;
-    margin-top: -100px
+    margin-top: -100px;
+    text-shadow: 2px 2px black;
+    background: rgb(0, 0, 0, 0.36);
+    border-radius: 0.375rem;
+    padding: 0 8px
 }
 
 .top-container > p {
     color: white;
     font-size: 32px;
+    text-shadow: 2px 2px black;
+    background: rgb(0, 0, 0, 0.36);
+    border-radius: 0.375rem;
+    padding: 0 8px
 }
 
 @media screen and (max-width: 1068px) {
