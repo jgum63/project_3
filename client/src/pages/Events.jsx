@@ -104,7 +104,6 @@ export default function Card() {
             <option value="Dining">Dining</option>
             <option value="Sailing">Sailing</option>
             <option value="Helicopter Ride over Islands">Helicopter Ride over Islands</option>
-            <option value="Fishing">Fishing</option>
           </select>
           <h4>Select your date:</h4>
 
